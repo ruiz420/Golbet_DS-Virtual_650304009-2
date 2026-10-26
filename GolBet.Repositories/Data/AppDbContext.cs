@@ -3,7 +3,7 @@ using GolBet.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace GolBet.Repositories.Data1
+namespace GolBet.Repositories.Data
 {
     public class AppDbContext : DbContext
     {
