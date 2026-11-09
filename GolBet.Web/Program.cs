@@ -5,7 +5,12 @@ using GolBet.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 using GolBet.Services.Implementations;
 using GolBet.Services.Interfaces;
-using GolBet.Services.Mapping;
+using System.Globalization;
+
+// Culture es-CO: dates and currency formatted in Colombian Spanish across the app
+var culture = new CultureInfo("es-CO");
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +34,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Business services ;
 builder.Services.AddScoped<IMatchService, MatchService>();
+builder.Services.AddScoped<ITeamService, TeamService>();
 
 var app = builder.Build();
 
