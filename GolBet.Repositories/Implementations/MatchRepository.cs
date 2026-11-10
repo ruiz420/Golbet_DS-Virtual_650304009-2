@@ -21,8 +21,8 @@ public class MatchRepository : GenericRepository<Match>, IMatchRepository
         if (!string.IsNullOrWhiteSpace(search))
         {
             var term = search.Trim();
-            query = query.Where(m => m.HomeTeam.Name.Contains(term)
-            || m.AwayTeam.Name.Contains(term));
+            query = query.Where(m => m.HomeTeam.Name.Contains(term) // EQUIPO LOCAL
+            || m.AwayTeam.Name.Contains(term)); //EQUIPO VISITANTE
         }
         return await query.OrderBy(m => m.Date).ToListAsync(); 
     } 

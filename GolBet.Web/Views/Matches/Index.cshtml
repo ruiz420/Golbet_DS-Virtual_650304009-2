@@ -7,18 +7,25 @@
 
 @{
     var current = (MatchStatus?)ViewBag.CurrentStatus;
-    var currentSearch = ViewBag.CurrentSearch as string;
+    var currentSearch = ViewBag.CurrentSearch as string; 
 
 }
-<form asp-action="Index" method="get" class="d-flex gap-2 mb-3">
+<form asp-action="Index" method="get" class="d-flex gap-2 mb-3"> 
     <input type="text" name="search" value="@currentSearch"
-           class="form-control" placeholder="Buscar por equipo..." />
+           class="form-control" placeholder="Buscar por equipo..." /> 
     @if (current is not null)
     {
-        <input type="hidden" name="status" value="@current" />
+        <input type="hidden" name="status" value="@current" /> 
     }
     <button type="submit" class="btn btn-success">Buscar</button>
+
+    @if (!string.IsNullOrWhiteSpace(currentSearch)) // BOTON DE LIMPIAR
+    {
+        <a asp-action="Index" asp-route-status="@current"
+           class="btn btn-outline-secondary">Limpiar</a>
+    }
 </form>
+
 
 <div class="d-flex gap-2 flex-wrap mb-4">
     <a asp-action="Index"
@@ -63,7 +70,7 @@ else
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
     @foreach (var match in Model)
     {
-        <div class="col">
+        <div class="col">i
             <div class="card h-100 shadow-sm">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <small class="text-muted">
