@@ -23,6 +23,11 @@ public class MappingProfile : Profile
 
         // Matches: write model (both directions)
         CreateMap<MatchFormDto, Match>().ReverseMap();
+
+        // Bets: two-hop flattening + computed payout
+        CreateMap<Bet, BetDto>()
+            .ForMember(dto => dto.PotentialPayout,
+                       options => options.MapFrom(bet => bet.Amount * bet.OddsAtPlacement));
     }
 
 }
